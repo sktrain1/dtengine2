@@ -1,0 +1,52 @@
+<template>
+    <lightning-card title="Bulk Account → Opportunity → Contact">
+        <div class="slds-p-around_medium">
+
+            <lightning-input
+                label="Count"
+                type="number"
+                min="1"
+                value={count}
+                onchange={handleCount}>
+            </lightning-input>
+
+            <lightning-input
+                label="First 3 Characters of Account Name"
+                maxlength="3"
+                value={prefix}
+                onchange={handlePrefix}>
+            </lightning-input>
+
+            <lightning-combobox
+                label="Record Type"
+                options={recordTypeOptions}
+                value={recordTypeId}
+                onchange={handleRecordType}>
+            </lightning-combobox>
+
+            <lightning-combobox
+                label="Opportunity Stage"
+                options={stageOptions}
+                value={stageName}
+                onchange={handleStage}>
+            </lightning-combobox>
+
+            <!-- Bottom Right Buttons -->
+            <div class="slds-grid slds-grid_align-end slds-m-top_large slds-gutters_small">
+                <lightning-button
+                    label="Create Records"
+                    variant="brand"
+                    onclick={handleCreate}>
+                </lightning-button>
+
+                <template if:true={createdRows.length}>
+                    <lightning-button
+                        label="Download CSV"
+                        onclick={downloadCSV}>
+                    </lightning-button>
+                </template>
+</div>
+
+</div>
+</lightning-card>
+</template>
